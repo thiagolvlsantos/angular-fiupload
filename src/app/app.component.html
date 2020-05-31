@@ -1,0 +1,24 @@
+<html>
+
+<hello name="{{ name }}"></hello>
+
+<div class="form-group">
+    <label for="file">Files:</label>
+    <input type="file"
+           id="file"
+           multiple
+           (change)="handleFileInput($event)"/>
+</div>
+
+<div *ngFor="let d of data">
+   <li>{{d.file.name }} | {{d.file.type }} | {{d.file.size }} | {{d.file.lastModified}}: 
+     <blockquote>
+       <img *ngIf="d.image;else text" [src]="d.content" width="250px"/>
+       <ng-template #text>
+       <pre style="background-color:lightgray;">{{d.content}}</pre>
+       </ng-template>
+     </blockquote>
+   </li>
+</div>
+
+</html>
